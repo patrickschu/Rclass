@@ -1,0 +1,25 @@
+complete <- function(directory, id) 
+		{
+       	pairs=vector();
+		for (i in id) 
+		{
+		realid=formatC(i, width=3, format="d", flag="0");
+		dataset=read.csv(paste(directory,"\\",realid,".csv", sep=""), header=T); 
+		goodones=dataset[complete.cases(dataset),];
+		pairs=c(pairs, c(i,nrow(goodones))); 
+		
+ }
+		print(pairs[9])
+        ## 'id' is an integer vector indicating the monitor ID numbers
+        ## to be used
+        
+        ## Return a data frame of the form:
+        ## id nobs
+        ## 1  117
+        ## 2  1041
+        ## ...
+        ## where 'id' is the monitor ID number and 'nobs' is the
+        ## number of complete cases
+}
+
+complete("specdata", id=1:10)
