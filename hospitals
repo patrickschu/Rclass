@@ -18,14 +18,14 @@ best=function(state, outcome) {
 		if (outcome == "heart attack")
 		{
 		statedataset1=statedataset[order(statedataset[,11], statedataset[,2]),];
-		return statedataset1[1,2]
+		return (statedataset1[1,2])
 		}
-
 		if (outcome== "pneumonia")
 		{
 		statedataset1=statedataset[order(statedataset[,23], statedataset[,2]),];
-		return statedataset1[1,2]
+		return (statedataset1[1,2])
 		}
+		
 		#Return hospital name in that state with lowest 30-day death rate
 		}
 
