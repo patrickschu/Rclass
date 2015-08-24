@@ -8,7 +8,7 @@ best=function(state, outcome) {
 		{
 		stop("invalid state")
  		}
-		if (outcome %in% c("pneumonia", "heart attack") == FALSE)
+		if (outcome %in% c("pneumonia", "heart attack", "heart failure") == FALSE)
 		{
 		stop("invalid outcome")
 		}
@@ -23,10 +23,20 @@ best=function(state, outcome) {
 		if (outcome== "pneumonia")
 		{
 		statedataset1=statedataset[order(statedataset[,23], statedataset[,2]),];
+		#print (statedataset1[2,2]);
+		print (statedataset1[,2]);
+		return (statedataset1[1,2])
+		
+		}
+		
+		if (outcome== "heart failure")
+		{
+		statedataset1=statedataset[order(statedataset[,17],];
 		return (statedataset1[1,2])
 		}
+
 		
 		#Return hospital name in that state with lowest 30-day death rate
 		}
 
-best("TX", "pneumonia")
+best("NJ", "heart failure")
