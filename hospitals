@@ -1,0 +1,29 @@
+best=function(state, outcome) {
+		#Read data
+		dataset=read.csv("outcome-of-care-measures.csv", header=T);
+		dataset$State=as.factor(dataset$State);
+		#Check that state and outcome are valid
+		statedataset=subset(dataset, dataset$State==state);
+
+		if (outcome == "heart attack")
+		{
+		statedataset1=statedataset[order(statedataset[,11]),];
+		}
+
+		if (outcome="pneumonia")
+		{
+		statedataset1=statedataset[order(statedataset[,23]),];
+		}
+
+		if (state %in% levels(dataset$State) == FALSE)
+		{
+		stop("invalid state")
+ 		}
+		if (outcome %in% c("pneumonia", "heart attack") == FALSE)
+		{
+		stop("invalid outcome")
+		}
+		#Return hospital name in that state with lowest 30-day death rate
+		}
+
+best("TX", "heart attack")
