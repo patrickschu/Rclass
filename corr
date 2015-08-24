@@ -1,0 +1,18 @@
+corr <- function(directory, threshold=0) {
+ 		files=list.files(directory);
+		output=vector()
+		for (file in files)
+		{
+		dataset=read.csv(paste(directory,"//",file,sep=""), header=T);
+		if (nrow(dataset[complete.cases(dataset),]) > threshold )
+		{
+		dataset1=na.omit(dataset);
+		nit=dataset1["nitrate"];
+		sul=dataset1["sulfate"];
+		corri=cor(nit, sul);
+		output=c(output, corri)
+		}
+		}
+		return(output)
+}
+
