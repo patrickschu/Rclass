@@ -1,5 +1,5 @@
 best=function(state, outcome) {
-		setwd("E:/");
+		setwd("H:/");
 		#Read data
 		dataset=read.csv("outcome-of-care-measures.csv", header=T);
 		dataset$State=as.factor(dataset$State);
@@ -17,26 +17,22 @@ best=function(state, outcome) {
 
 		if (outcome == "heart attack")
 		{
-		statedataset1=statedataset[order(statedataset[,11], statedataset[,2]),];
-		return (statedataset1[1,2])
+		statedataset1=statedataset[order(as.numeric(as.character(statedataset[,11])), statedataset[,2]),];
+		return (as.character(statedataset1[1,2]))
 		}
 		if (outcome== "pneumonia")
 		{
-		statedataset1=statedataset[order(statedataset[,23], statedataset[,2]),];
-		#print (statedataset1[2,2]);
-		print (statedataset1[,2]);
-		return (statedataset1[1,2])
+		statedataset1=statedataset[order(as.numeric(as.character(statedataset[,23])), statedataset[,2]),];
+		return (as.character(statedataset1[1,2]))
 		
 		}
 		
 		if (outcome== "heart failure")
 		{
-		statedataset1=statedataset[order(statedataset[,17],];
-		return (statedataset1[1,2])
+		statedataset1=statedataset[order(as.numeric(as.character(statedataset[,17])), statedataset[,2]),]
+		return (as.character(statedataset1[1,2]))
 		}
 
 		
 		#Return hospital name in that state with lowest 30-day death rate
 		}
-
-best("NJ", "heart failure")
