@@ -1,0 +1,43 @@
+rankhospital <- function(state, outcome, num) {
+		## Read outcome data
+		#Read data
+		dataset=read.csv("outcome-of-care-measures.csv", header=T);
+		dataset$State=as.factor(dataset$State);
+		#Check that state and outcome are valid
+		if (state %in% levels(dataset$State) == FALSE)
+		{
+		stop("invalid state")
+ 		}
+		if (outcome %in% c("pneumonia", "heart attack", "heart failure") == FALSE)
+		{
+		stop("invalid outcome")
+		}
+		#the actual thing
+		#order them, assign them ranks
+		statedataset=subset(dataset, dataset$State==state);
+
+		if (outcome == "heart attack")
+		{
+		statedataset1=statedataset[statedataset[,11] != "Not Available",];
+		statedataset2=statedataset1[order(as.numeric(as.character(statedataset1[,11])), statedataset1[,2]),];
+		}
+		if (outcome== "pneumonia")
+		{
+		statedataset1=statedataset[statedataset[,23] != "Not Available",];
+		statedataset2=statedataset1[order(as.numeric(as.character(statedataset1[,23])), statedataset1[,2]),];
+
+		
+		}
+		
+		if (outcome== "heart failure")
+		{
+		statedataset1=statedataset[statedataset[,17] != "Not Available",];
+		statedataset2=statedataset1[order(as.numeric(as.character(statedataset1[,17])), statedataset1[,2]),];
+
+		}
+		if (num == "best") { num = 1}
+		if (num =="worst") {num = nrow(statedataset2)}
+		return(as.character(statedataset2[num,2]))
+		}
+
+
